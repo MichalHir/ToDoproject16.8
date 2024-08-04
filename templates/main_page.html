@@ -9,7 +9,7 @@
 <body>
         <ul>
             {% for thisclient in client %}
-                <li>Client: {{ thisclient[0].username }} To-Do: {{ thisclient[0].list }}  </li>
+                <li>Client: {{ thisclient.username }} To-Do: {{ thisclient.list }}  </li>
             {% endfor %}
         </ul>
 </body>
