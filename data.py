@@ -1,2 +1,3 @@
-to_do=({"chore":"homework"},{"chore":"dishes"})
-client=({"username":"Jackob","password":1234,"list":to_do[0]["chore"],"done":True},{"username":"Kelly","password":4556,"list":to_do[1]["chore"],"done":False})
+to_do=[{"chore":"homework"},{"id":2,"chore":"dishes"}]
+clients=[{"id":1,"username":"Jackob","password":1234}]
+cards=[{"id":1,"cardname":"to do","username":"Jackob","chores":(to_do[0]["chore"],to_do[1]["chore"])},{"id":2,"cardname":"to do","username":"Jackob","chores":(to_do[0]["chore"],to_do[1]["chore"])},{"id":3,"cardname":"to do","username":"Jackob","chores":(to_do[0]["chore"],to_do[1]["chore"])}]

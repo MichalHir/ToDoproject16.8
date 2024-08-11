@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block title %}Add Car {% endblock %} {% block
+content %}
+
+<h2>sign up</h2>
+<form method="POST" action="/signUp">
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" required />
+  <br />
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required />
+  <br />
+  <button type="submit">sign up</button>
+</form>
+{% endblock %}
