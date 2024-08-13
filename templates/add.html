@@ -1,15 +1,23 @@
-{% extends "base.html" %}
-{% block title %}Add Car {% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}Add Car {% endblock %} {% block
+content %}
 <h1>add Card for {{ username }}</h1>
 
-    <form action="" method="POST">
-        <label for="cardname">cardname :</label>
-        <input type="text" name="cardname" id="cardname" value="{{ card.cardname  }}">
-        <label for="chores">Chores (comma-separated):</label>
-        <input type="text" name="chores" id="chores" value="{{ card.chores | join(', ') }}">
-        <button type="submit">add</button>
-    </form>
-    <a href="/">Back to list</a>
+<form action="" method="POST">
+  <label for="cardname">cardname :</label>
+  <input
+    type="text"
+    name="cardname"
+    id="cardname"
+    value="{{ card.cardname  }}"
+  />
+  <label for="chores">Chores (comma-separated):</label>
+  <input
+    type="text"
+    name="chores"
+    id="chores"
+    value="{{ card.chores | join(', ') }}"
+  />
+  <button type="submit">add</button>
+</form>
+<a href="/">Back to list</a>
 {% endblock %}

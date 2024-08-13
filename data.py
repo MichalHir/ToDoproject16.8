@@ -1,3 +1,10 @@
-to_do=[{"chore":"homework"},{"id":2,"chore":"dishes"}]
-clients=[{"id":1,"username":"Jackob","password":1234}]
-cards=[{"id":1,"cardname":"to do","username":"Jackob","chores":(to_do[0]["chore"],to_do[1]["chore"])},{"id":2,"cardname":"to do","username":"Jackob","chores":(to_do[0]["chore"],to_do[1]["chore"])},{"id":3,"cardname":"to do","username":"Jackob","chores":(to_do[0]["chore"],to_do[1]["chore"])}]
+# to_do = [{"chore": "homework"}, {"id": 2, "chore": "dishes"}]
+users = [{"id": 1, "username": "Jackob", "password": 1234}]
+cards = [
+    {
+        "id": 1,
+        "cardname": "to do",
+        "username": "Jackob",
+        "chores": ("homework", "dishes"),
+    }
+]

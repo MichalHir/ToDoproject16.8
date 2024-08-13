@@ -1,27 +1,20 @@
-{% extends "base.html" %}
-{% block title %}main page {% endblock %}
+{% extends "base.html" %} {% block title %}main page {% endblock %} {% block
+content %}
 
-{% block content %}
+<ul>
+  {% for thisuser in users %} {%for card in cards %} {% if
+  thisuser.username==thisusername%}
+  <li>
+    {{card.cardname}} user: {{ thisuser.username }} to-do list: {{ card.chores}}
+  </li>
+  {%else %}
+  <li>user: {{ thisuser.username }} to-do list: empty list</li>
+  {% endif %}
+  <button onclick="window.location.href='/edit/{{card.id}}';">edit</button>
+  <button onclick="window.location.href='/add/{{card.id}}';">add</button>
+  <button onclick="window.location.href='/delete/{{card.id}}';">delete</button>
 
-        <ul>
-            {% for thisclient in clients %}
-                {%for card in cards %}
-                    {% if thisclient.username==thisusername|length>0%}
-                        <li>{{card.cardname}} Client: {{ thisclient.username }} to-do list: {{ card.chores}}  </li>
-                    {%else %}
-                        <li>Client: {{ thisclient.username }} to-do list: empty list  </li>
-                    {% endif %}
-                    <button onclick="window.location.href='/edit/{{card.id}}';">edit</button>
-                    <button onclick="window.location.href='/add/{{card.id}}';">add</button>
-                    <button onclick="window.location.href='/delete/{{card.id}}';">delete</button>
-                  
-                {% endfor %}
-            
-        
-                
-            {% endfor %}
-        </ul>
+  {% endfor %} {% endfor %}
+</ul>
 
-
-        
 {% endblock %}
