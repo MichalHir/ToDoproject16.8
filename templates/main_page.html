@@ -11,12 +11,16 @@ content %}
   <button onclick="window.location.href='/edit/{{card.id}}';">edit</button>
   <button onclick="window.location.href='/add/{{card.id}}';">add</button>
   <button onclick="window.location.href='/delete/{{card.id}}';">delete</button>
+  <button onclick="window.location.href='/single/{{card.username}}';">show all cards of {{card.username}}</button>
 
-  {%else %}
-  <li>user: {{ thisuser.username }} to-do list: no list available</li>
-  {% endif %}
-  
-  {% endfor %} {% endfor %}
+
+  {% endif %} {% endfor %} {% endfor %}
 </ul>
+
+<select id="username" name="username" required>
+  {%for user in users %}
+  <option value="username">{{user.username}}</option>
+  {%endfor%}
+</select>
 
 {% endblock %}

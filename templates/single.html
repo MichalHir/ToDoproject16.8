@@ -6,13 +6,13 @@ content %}
   thisuser.username==thisusername%}
   <li>
     {{card.cardname}} user: {{ thisuser.username }} to-do list: {{ card.chores}}
+  
   </li>
-  {%else %}
-  <li>user: {{ thisuser.username }} to-do list: empty list</li>
-  {% endif %}
   <button onclick="window.location.href='/edit/{{card.id}}';">edit</button>
   <button onclick="window.location.href='/add/{{card.id}}';">add</button>
   <button onclick="window.location.href='/delete/{{card.id}}';">delete</button>
+  {% endif %}
+  
 
   {% endfor %} {% endfor %}
 </ul>

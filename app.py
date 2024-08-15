@@ -1,20 +1,14 @@
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 
+from side_defs.prints import checks
+
 # from jinja2 import Template
 
 
 app = Flask(__name__)
-#app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
-# app.config["SESSION_PERMANENT"] = True
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+app.config["SESSION_PERMANENT"] = True
 from data import users, cards
-
-# for checking
-def print_users(users,data_type):
-    user_info = []
-    for user in users:
-        user_info.append(f'{data_type}{user["id"]} {user["username"]}')
-    for info in user_info:
-        print(info)
 
 
 @app.route("/")
@@ -24,7 +18,8 @@ def main_page():
     #     return redirect(url_for("login"))
     return render_template("main_page.html", users=users, cards=cards)
 
-@app.route("/signUp", methods=["GET", "POST"])
+
+@app.route("/signUp", methods=["GET", "POST"])  # sign up works
 def signUp():
     if request.method == "POST":
         username = request.form["username"]
@@ -38,10 +33,10 @@ def signUp():
             "username": username,
             "password": password,
         }
+        flash("sign up successful!", "success")
         users.append(newuser)
         # checks
-        # print_users(users, "user")
-        # print_users(cards, "card")
+        checks()
         return redirect("/")
     return render_template("signUp.html")
 
@@ -51,9 +46,12 @@ def login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
+        checks()
         for user in users:
-            if username == user["username"] and password == int(user["password"]):
-                # flash("Login successful!", "success")
+            if username == user["username"] and password == user["password"]:
+                flash("Login successful!", "success")
+                # checks
+
                 # session.permanent = True
                 # session["logged_in"] = True
                 # session["username"] = username
@@ -63,10 +61,10 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/logout")
+@app.route("/logout")  # sign up works
 def logout():
-    session.clear()
-    # flash("Goodbye. please login again soon")
+    # session.clear()
+    flash("Goodbye. please login again soon")
     return redirect(url_for("login"))
 
 
@@ -89,7 +87,6 @@ app.route("/add/<int:id>", methods=["GET", "POST"])
 
 
 def add_card(id):
-    # flash("Goodbye. please login again soon")
     for card in cards:
         if card["id"] == id:
             username = card["username"]
@@ -107,6 +104,7 @@ def add_card(id):
             "chores": chores,
         }
         cards.append(newcard)
+        flash("card added successful!", "success")
         return redirect(url_for("main_page"))
     return render_template("add.html", username=username)
 
