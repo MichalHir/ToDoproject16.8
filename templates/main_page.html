@@ -9,18 +9,28 @@ content %}
     {{card.cardname}} user: {{ thisuser.username }} to-do list: {{ card.chores}}
   </li>
   <button onclick="window.location.href='/edit/{{card.id}}';">edit</button>
-  <button onclick="window.location.href='/add/{{card.id}}';">add</button>
+  <button onclick="window.location.href='/add/{{card.username}}';">add</button>
   <button onclick="window.location.href='/delete/{{card.id}}';">delete</button>
   <button onclick="window.location.href='/single/{{card.username}}';">show all cards of {{card.username}}</button>
+  <button onclick="window.location.href='/single_card/{{card.id}}';">show card alone</button>
 
 
   {% endif %} {% endfor %} {% endfor %}
 </ul>
 
 <select id="username" name="username" required>
-  {%for user in users %}
-  <option value="username">{{user.username}}</option>
-  {%endfor%}
+  {% for user in users %}
+    <option value="{{ user.username }}">{{ user.username }}</option>
+  {% endfor %}
 </select>
+
+<button type="button" onclick="redirectToPage()">Go</button>
+
+<script>
+  function redirectToPage() {
+    var selectedUsername = document.getElementById("username").value;
+    window.location.href = "/add/<string:username>";
+  }
+</script>
 
 {% endblock %}

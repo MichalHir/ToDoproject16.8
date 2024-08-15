@@ -1,7 +1,9 @@
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 
-from side_defs.prints import checks
-
+from defs.prints import checks
+# from defs.cards import *
+# from defs.pages import *
+# from defs.users import *
 # from jinja2 import Template
 
 
@@ -11,7 +13,7 @@ app.config["SESSION_PERMANENT"] = True
 from data import users, cards
 
 
-@app.route("/")
+@app.route("/") # main page works
 def main_page():
     # if not session.get("logged_in"):
     #     flash("please login", "danger")
@@ -50,7 +52,7 @@ def login():
         for user in users:
             if username == user["username"] and password == user["password"]:
                 flash("Login successful!", "success")
-                # checks
+                # checks()
 
                 # session.permanent = True
                 # session["logged_in"] = True
@@ -61,14 +63,15 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/logout")  # sign up works
+@app.route("/logout")  # log out works
 def logout():
+    # checks()
     # session.clear()
     flash("Goodbye. please login again soon")
     return redirect(url_for("login"))
 
 
-@app.route("/edit/<int:id>", methods=["GET", "POST"])
+@app.route("/edit/<int:id>", methods=["GET", "POST"]) # edit works
 def edit_card(id):
     for card in cards:
         if card["id"] == id:
@@ -83,13 +86,11 @@ def edit_card(id):
     return render_template("edit.html", card=thiscard)
 
 
-app.route("/add/<int:id>", methods=["GET", "POST"])
+@app.route("/add/<string:username>", methods=["GET", "POST"])
 
 
-def add_card(id):
-    for card in cards:
-        if card["id"] == id:
-            username = card["username"]
+def add_card(username):
+    checks()
     if request.method == "POST":
         cardname = request.form.getlist("cardname")
         chores = request.form.getlist("chores")
@@ -109,7 +110,7 @@ def add_card(id):
     return render_template("add.html", username=username)
 
 
-@app.route("/delete/<int:id>", methods=["GET", "POST"])
+@app.route("/delete/<int:id>", methods=["GET", "POST"]) # delete works
 def delete_card(id):
     for card in cards:
         if card["id"] == id:
@@ -119,12 +120,18 @@ def delete_card(id):
     return render_template("main_page.html", users=users, cards=cards)
 
 
-@app.route("/single/<string:username>", methods=["GET", "POST"])
+@app.route("/single/<string:username>", methods=["GET", "POST"]) # single works
 def single(username):
+    checks()
     return render_template(
-        "single.html", users=users, cards=cards, thisusername=username
+        "single_user.html", cards=cards, right_username=username
     )
 
-
+@app.route("/single_card/<int:id>", methods=["GET", "POST"]) # single card works
+def single_card(id):
+    checks()
+    return render_template(
+        "single_card.html", cards=cards, id_number=id
+    )
 if __name__ == "__main__":
     app.run(debug=True)

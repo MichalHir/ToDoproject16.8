@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %}single{% endblock %} {% block content
+    %}
+    
+    <ul>
+      {%for card in cards %} {% if card.id==id_number%}
+      <li>
+        {{card.cardname}} user: {{ card.username }} to-do list: {{ card.chores}}
+      </li>
+      <button onclick="window.location.href='/edit/{{card.id}}';">edit</button>
+      <button onclick="window.location.href='/add/{{card.id}}';">add</button>
+      <button onclick="window.location.href='/delete/{{card.id}}';">delete</button>
+      <button onclick="window.location.href='/single_card/{{card.id}}';">show card alone</button>
+      {% endif %} {% endfor %}
+    </ul>
+    
+    {% endblock %}

@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block title %}Add Car {% endblock %} {% block
+{% extends "base.html" %} {% block title %}add {% endblock %} {% block
 content %}
 <h1>add Card for {{ username }}</h1>
 
@@ -14,14 +14,14 @@ content %}
     type="text"
     name="cardname"
     id="cardname"
-    value="{{ card.cardname  }}"
+    value="cardname"
   />
   <label for="chores">Chores (comma-separated):</label>
   <input
     type="text"
     name="chores"
     id="chores"
-    value="{{ card.chores | join(', ') }}"
+    value="chores"
   />
   <button type="submit">add</button>
 </form>

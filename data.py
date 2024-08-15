@@ -3,24 +3,24 @@ users = [{"id": 1, "username": "Jackob", "password": 1234},{"id": 2, "username":
 cards = [
     {
         "id": 1,
-        "cardname": "to do",
+        "cardname": "Jackob to do",
         "username": "Jackob",
         "chores": ("homework", "dishes"),
     },
     {
         "id": 2,
-        "cardname": "to do2",
+        "cardname": "Jackob to do2",
         "username": "Jackob",
         "chores": ("homework", "dishes"),
     },{
         "id": 3,
-        "cardname": "to do",
-        "username": "Tory",
+        "cardname": "Tory to do",
+        "username": "Troy",
         "chores": ("homework", "dishes"),
     },
     {
         "id": 4,
-        "cardname": "to do2",
+        "cardname": "Tory to do2",
         "username": "Tory",
         "chores": ("homework", "dishes"),
     }
